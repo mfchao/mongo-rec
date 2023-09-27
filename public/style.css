@@ -3,41 +3,77 @@ html {
 }
 
 body {
-  margin: 0 1em;
+  margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: Arial, sans-serif;
   max-height: 100vh;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2em;
+  max-width: 800px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 h1, h2 {
   margin: 0;
   padding: 0;
+  padding-right: 3em;
 }
 
 h1 {
   margin-top: 0.5em;
   text-align: center;
+  font-size: 24px;
+  color: #333;
 }
 
 main {
   display: flex;
-  gap: 1em;
+  gap: 2em;
+  flex-wrap: wrap;
+  margin-top: 2em;
 }
 
 #operations, #response {
-  width: 45%;
-  height: 70vh;
+  flex: 1;
+  /* Distribute available space equally between the two sections */
   padding: 1em;
 }
 
 #operations-list, #response-text {
-  height: 80vh;
+  height: 70vh;
+  /* Reduce height slightly to make room for the header */
   width: 100%;
   overflow: auto;
   border: 1px solid #ccc;
   padding: 1em;
+  border-radius: 4px;
+  /* Add rounded corners */
 }
 
 #response-text {
   font-family: 'Courier New', Courier, monospace;
+}
+
+/* Add some styling for buttons if needed */
+.button {
+  background-color: #0078d4;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5em 1em;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #005cbf;
 }
