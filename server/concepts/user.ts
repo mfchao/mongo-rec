@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 import DocCollection, { BaseDoc } from "../framework/doc";
-import { BadValuesError, NotAllowedError, NotFoundError } from "./errors";
+import { BadValuesError, NotAllowedError } from "./errors";
 
 export interface UserDoc extends BaseDoc {
   username: string;
@@ -13,7 +13,12 @@ export default class UserConcept {
   async getById(_id: ObjectId) {
     // TODO 1: Implement this method
     // Hint: check out this.users.readOne
-    throw new Error("Not implemented!");
+    const user = await this.users.readOne({ _id });
+    if (user) {
+      return { msg: "Got user:", user };
+    } else {
+      throw new Error("No user found.");
+    }
   }
 
   async create(username: string, password: string) {
@@ -25,7 +30,11 @@ export default class UserConcept {
   async update(_id: ObjectId, update: Partial<UserDoc>) {
     // TODO 2: Implement this method
     // Hint: check out this.users.updateOne
-    throw new Error("Not implemented!");
+    const existingUser = await this.users.readOne({ _id });
+
+    if (!existingUser) {
+      throw new Error("No user found.");
+    }
   }
 
   // Sanitizes user object by removing password field
